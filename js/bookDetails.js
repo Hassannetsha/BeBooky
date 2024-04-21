@@ -57,7 +57,12 @@ if (editBookBtn) {
 
 
 function deleteBook() {
-    
+    var selectedBook = JSON.parse(sessionStorage.getItem('selectedBook'));
+    var books = JSON.parse(localStorage.getItem('books'));
+    books = books.filter(function (book){
+        return book.id !== selectedBook.id;
+    });
+    localStorage.setItem('books', JSON.stringify(books));
 }
 
 
